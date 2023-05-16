@@ -51,13 +51,13 @@ function update() {
 // Given an object of values (a value has amount, years and rate ),
 // calculate the monthly payment.  The output should be a string
 // that always has 2 decimal places.
-function calculateMonthlyPayment(amount, years, rate) {
-  const i = rate / 12;
-  const n = years * 12;
-  const monthlyPayment = (amount * i) / (1 - Math.pow((1 + i), -n));
-  const roundedMonthlyPayment = monthlyPayment.toFixed(2);
-  const stringMonthlyPayment = roundedMonthlyPayment.toString();
-  return stringMonthlyPayment;
+function calculateMonthlyPayment(values) {
+  const monthlyPayment = (values.rate / 100) / 12;
+  const n = Math.floor(values.years * 12);
+  return (
+    (monthlyPayment * values.amount) /
+    (1 - Math.pow((1 + monthlyPayment), -n))
+  ).toFixed(2).toString();
 }
 
 
@@ -67,4 +67,3 @@ function updateMonthly(monthly) {
   const monthlyPaymentElement = document.getElementById('monthly-payment');
   monthlyPaymentElement.textContent = monthly;
 }
-

@@ -43,7 +43,7 @@ function setupInitialValues() {
 // Update the monthly payment
 function update() {
   const { amount, years, rate } = getCurrentUIValues();
-  const monthlyPayment = calculateMonthlyPayment(amount, years, rate);
+  const monthlyPayment = calculateMonthlyPayment({amount, years, rate});
   updateMonthly(monthlyPayment);
 }
 
@@ -67,3 +67,4 @@ function updateMonthly(monthly) {
   const monthlyPaymentElement = document.getElementById('monthly-payment');
   monthlyPaymentElement.textContent = monthly;
 }
+
